@@ -61,7 +61,7 @@
             screen = window.open(
                 `${document.location.toString()}#${name}`,
                 name,
-                "menubar=no,toolbar=no,location=no,innerWidth=1440,innerHeight=900"
+                "menubar=no,toolbar=no,location=no,innerWidth=1600,innerHeight=900"
                 // "innerWidth=1916,innerHeight=1070"
             )
         }

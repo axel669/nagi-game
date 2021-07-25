@@ -27,14 +27,14 @@
 <style>
     svg {
         position: absolute;
-        width: 1440px;
+        width: 1600px;
         height: 900px;
     }
 
     game-background {
         display: block;
         position: absolute;
-        width: 1440px;
+        width: 1600px;
         height: 900px;
         background-image: url(./bg/main-no-logo.gif);
         background-position: center center;
