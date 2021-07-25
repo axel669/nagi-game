@@ -36,6 +36,10 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    :global(body) {
+        overflow: hidden;
+    }
 </style>
 
 <game-background />
