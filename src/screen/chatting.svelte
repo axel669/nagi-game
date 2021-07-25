@@ -22,15 +22,15 @@
 <style>
     svg {
         position: absolute;
-        width: 1920px;
-        height: 1080px;
+        width: 1440px;
+        height: 900px;
     }
 
     game-background {
         display: block;
         position: absolute;
-        width: 1920px;
-        height: 1080px;
+        width: 1440px;
+        height: 900px;
         background-image: url(./bg/main-no-logo.gif);
         background-position: center center;
         background-repeat: no-repeat;
@@ -40,7 +40,7 @@
 
 <game-background />
 
-<svg>
+<svg viewbox="0 0 1920 1080">
     <defs>
         <style>
             @font-face {
