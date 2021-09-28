@@ -31,10 +31,14 @@
         position: absolute;
         width: 1600px;
         height: 900px;
-        background-image: url(./bg/main-no-logo.gif);
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
     }
 
     :global(body) {
@@ -42,7 +46,9 @@
     }
 </style>
 
-<game-background />
+<game-background>
+    <video autoplay muted playsinline loop src="./bg/main-bg.webm" />
+</game-background>
 
 <svg viewbox="0 0 1920 1080">
     <defs>
