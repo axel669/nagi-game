@@ -8,6 +8,7 @@ const template = (options) => `<!doctype html>
     </head>
 
     <body>
+        <script src="/peerjs.min.js"></script>
         <script src="${options.files.js[0].fileName}"></script>
     </body>
 </html>

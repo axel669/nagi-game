@@ -24,18 +24,18 @@ const player1 = writable(read(state.player1, emptyPlayer))
 const player2 = writable(read(state.player2, emptyPlayer))
 const player3 = writable(read(state.player3, emptyPlayer))
 
-window.addEventListener(
-    "storage",
-    () => {
-        round.set(read(state.round))
-        question.set(read(state.question))
-        rules.set(read(state.rules))
-        answer.set(read(state.answer))
-        player1.set(read(state.player1))
-        player2.set(read(state.player2))
-        player3.set(read(state.player3))
-    }
-)
+// window.addEventListener(
+//     "storage",
+//     () => {
+//         round.set(read(state.round))
+//         question.set(read(state.question))
+//         rules.set(read(state.rules))
+//         answer.set(read(state.answer))
+//         player1.set(read(state.player1))
+//         player2.set(read(state.player2))
+//         player3.set(read(state.player3))
+//     }
+// )
 
 export {
     round,

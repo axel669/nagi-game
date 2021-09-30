@@ -13,6 +13,7 @@
     import Player from "./console/player.svelte"
 
     import state from "../state-name"
+    import {push, peerID, peerCount} from "../push"
 
     const read = (name, def) => {
         const source = localStorage[name]
@@ -50,24 +51,47 @@
     $: write(state.player2, player2)
     $: write(state.player3, player3)
 
-    let questionWindow = null
-    const openScreen = (name) => {
-        let screen = null
-        return () => {
-            if (screen !== null && screen.closed === false) {
-                return
-            }
+    const pushState = () => $push({
+        round,
+        question,
+        rules,
+        answer,
+        player1,
+        player2,
+        player3
+    })
+    $: pushState(
+        round,
+        question,
+        rules,
+        answer,
+        player1,
+        player2,
+        player3
+    )
 
-            screen = window.open(
-                `${document.location.toString()}#${name}`,
-                name,
-                "menubar=no,toolbar=no,location=no,innerWidth=1600,innerHeight=900"
-                // "innerWidth=1916,innerHeight=1070"
-            )
+    const openQuestions = () => {
+        const params = {
+            screen: "question",
+            host: $peerID
         }
+        const queryString = (new URLSearchParams(params)).toString()
+
+        navigator.clipboard.writeText(
+            new URL(`/question/?${queryString}`, location).toString()
+        )
     }
-    const openQuestions = openScreen("question")
-    const openChat = openScreen("chat")
+    const openChat = () => {
+        const params = {
+            screen: "chat",
+            host: $peerID
+        }
+        const queryString = (new URLSearchParams(params)).toString()
+
+        navigator.clipboard.writeText(
+            new URL(`/chat/?${queryString}`, location).toString()
+        )
+    }
 </script>
 
 <style>
@@ -99,6 +123,15 @@
         </svelte:fragment>
 
         <Grid cols={1} rowHeight="auto" padding="4px" gap="8px">
+            <div>
+                PeerID: {$peerID}<br />
+                Connected Screens: {$peerCount}
+            </div>
+
+            <Button variant="outline" on:tap={pushState}>
+                Force Update Screens
+            </Button>
+
             <Grid cols={2} padding="0px">
                 <NumberInput bind:value={round} label="Round" />
                 <NumberInput bind:value={question} label="Question" />
@@ -125,10 +158,10 @@
 
             <Grid cols={2} padding="0px" gap="4px">
                 <Button on:tap={openQuestions} color="primary" variant="outline">
-                    Open Question Screen
+                    Copy Question Screen URL
                 </Button>
                 <Button on:tap={openChat} color="primary" variant="outline">
-                    Open Chatting Screen
+                    Copy Chatting Screen URL
                 </Button>
             </Grid>
         </Grid>

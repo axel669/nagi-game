@@ -3,7 +3,7 @@
     import baseline from "svelte-doric/core/baseline"
     import theme from "svelte-doric/core/theme/tron"
 
-    import Console from "./screen/console.svelte"
+    import Chatting from "../screen/chatting.svelte"
 </script>
 
 <style>
@@ -11,4 +11,4 @@
 
 <AppStyle {baseline} {theme} />
 
-<Console />
+<Chatting />

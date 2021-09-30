@@ -113,19 +113,19 @@
     <image
         x={65} y={695}
         width={56} height={56}
-        href="./image/screw.png"
+        href="/image/screw.png"
         class:active={powers[0]}
     />
     <image
         x={158} y={750}
         width={56} height={56}
-        href="./image/pass.png"
+        href="/image/pass.png"
         class:active={powers[1]}
     />
     <image
         x={248} y={700}
         width={56} height={56}
-        href="./image/challenge.png"
+        href="/image/challenge.png"
         class:active={powers[2]}
     />
 

@@ -31,4 +31,4 @@
 <Text anchor="middle middle" x={475} y={80} size="64px" text="Round {round}" />
 <Text anchor="middle middle" x={1445} y={80} size="64px" text="Question {question}" />
 
-<image href="./image/logo.png" x={900} y={20} width={120} height={120} />
+<image href="/image/logo.png" x={900} y={20} width={120} height={120} />

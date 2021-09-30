@@ -95,19 +95,19 @@
     <image
         x={157} y={215}
         width={16} height={16}
-        href="./image/screw.png"
+        href="/image/screw.png"
         class:active={powers[0]}
     />
     <image
         x={228} y={216}
         width={16} height={16}
-        href="./image/pass.png"
+        href="/image/pass.png"
         class:active={powers[1]}
     />
     <image
         x={299} y={216}
         width={16} height={16}
-        href="./image/challenge.png"
+        href="/image/challenge.png"
         class:active={powers[2]}
     />
 </g>
