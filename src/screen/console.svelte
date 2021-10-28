@@ -13,7 +13,7 @@
     import Player from "./console/player.svelte"
 
     import state from "../state-name"
-    import {push, peerID, peerCount} from "../push"
+    import {push, peerID, peerCount, peerEvents} from "../push"
 
     const read = (name, def) => {
         const source = localStorage[name]
@@ -32,6 +32,11 @@
         powers: [true, true, true]
     }
 
+    peerEvents.addEventListener(
+        "connection",
+        () => setTimeout(pushState, 100)
+    )
+
     let round = read(state.round, 1)
     let question = read(state.question, 1)
     let rules = read(state.rules, "")
@@ -40,6 +45,7 @@
     let player1 = read(state.player1, emptyPlayer)
     let player2 = read(state.player2, emptyPlayer)
     let player3 = read(state.player3, emptyPlayer)
+    let player4 = read(state.player4, emptyPlayer)
 
     $: write(state.round, round)
     $: write(state.question, question)
@@ -50,6 +56,7 @@
     $: write(state.player1, player1)
     $: write(state.player2, player2)
     $: write(state.player3, player3)
+    $: write(state.player4, player4)
 
     const pushState = () => $push({
         round,
@@ -58,7 +65,8 @@
         answer,
         player1,
         player2,
-        player3
+        player3,
+        player4
     })
     $: pushState(
         round,
@@ -67,12 +75,12 @@
         answer,
         player1,
         player2,
-        player3
+        player3,
+        player4
     )
 
     const openQuestions = () => {
         const params = {
-            screen: "question",
             host: $peerID
         }
         const queryString = (new URLSearchParams(params)).toString()
@@ -83,7 +91,6 @@
     }
     const openChat = () => {
         const params = {
-            screen: "chat",
             host: $peerID
         }
         const queryString = (new URLSearchParams(params)).toString()
@@ -150,10 +157,11 @@
                 <textarea bind:value={text} />
             </Grid>
 
-            <Grid cols={3} padding="0px" gap="4px">
+            <Grid cols={2} padding="0px" gap="4px">
                 <Player bind:player={player1} playerNumber={1} />
                 <Player bind:player={player2} playerNumber={2} />
                 <Player bind:player={player3} playerNumber={3} />
+                <Player bind:player={player4} playerNumber={4} />
             </Grid>
 
             <Grid cols={2} padding="0px" gap="4px">

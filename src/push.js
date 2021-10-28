@@ -13,6 +13,7 @@ const push = writable(null)
 const peerCount = writable(null)
 const messages = writable(null)
 const connected = writable(false)
+const peerEvents = new EventTarget()
 
 const isHost = host === null
 
@@ -36,6 +37,11 @@ const initHost = () => {
         (connection) => {
             connections.add(connection)
             peerCount.set(connections.size)
+            peerEvents.dispatchEvent(
+                new CustomEvent(
+                    "connection"
+                )
+            )
             connection.on(
                 "close",
                 () => {
@@ -106,6 +112,7 @@ export {
     peerCount,
     peerID,
     push,
+    peerEvents,
 
     isHost,
 }

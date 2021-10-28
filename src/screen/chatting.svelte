@@ -2,6 +2,8 @@
     import Banner from "../comp/banner.svelte"
 
     import PlayerDisplay from "../comp/player-display.svelte"
+    import Player from "./chatting/player.svelte"
+    import Controller from "./chatting/controller.svelte"
 
     import {messages, connected} from "../push"
 
@@ -20,6 +22,7 @@
         player1: emptyPlayer,
         player2: emptyPlayer,
         player3: emptyPlayer,
+        player4: emptyPlayer,
     }
     $messages.listen(
         newState => currentState = newState
@@ -31,15 +34,7 @@
     $: player1 = currentState.player1
     $: player2 = currentState.player2
     $: player3 = currentState.player3
-
-    // import {
-    //     round,
-    //     question,
-    //     rules,
-    //     player1,
-    //     player2,
-    //     player3,
-    // } from "./question/state"
+    $: player4 = currentState.player4
 </script>
 
 <svelte:head>
@@ -63,11 +58,7 @@
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
-    }
-
-    video {
-        width: 100%;
-        height: 100%;
+        background-image: url(/bg/main-bg.png);
     }
 
     :global(body) {
@@ -75,9 +66,7 @@
     }
 </style>
 
-<game-background>
-    <video autoplay muted playsinline loop src="/bg/main-bg.webm" />
-</game-background>
+<game-background />
 
 <svg viewbox="0 0 1920 1080">
     <defs>
@@ -91,22 +80,47 @@
 
     <Banner question={question} round={round} />
 
-    <PlayerDisplay
-        x={680} y={200}
-        name={player1.name}
-        score={player1.score}
-        powers={player1.powers}
+    <Player
+        num={1}
+        x={410} y={165}
+        player={player1}
+        start="#1655C6"
+        end="#A1BBE9"
+        corner="#3DC5F1"
     />
-    <PlayerDisplay
-        x={1100} y={200}
-        name={player2.name}
-        score={player2.score}
-        powers={player2.powers}
+
+    <Player
+        num={2}
+        x={1170} y={165}
+        player={player2}
+        start="#ECC410"
+        end="#FBEFBD"
+        corner="#FEFC01"
     />
-    <PlayerDisplay
-        x={1520} y={200}
-        name={player3.name}
-        score={player3.score}
-        powers={player3.powers}
+
+    <Player
+        num={3}
+        x={410} y={620}
+        player={player3}
+        start="#18961E"
+        end="#F1F8F0"
+        corner="#0EF22E"
+    />
+
+    <Player
+        num={4}
+        x={1170} y={620}
+        player={player4}
+        start="#BD1213"
+        end="#EDBBBA"
+        corner="#FF2020"
+    />
+
+    <Controller
+        x={30} y={165}
+        host
+    />
+    <Controller
+        x={30} y={620}
     />
 </svg>

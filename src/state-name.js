@@ -7,4 +7,5 @@ export default {
     player1: "game:p1",
     player2: "game:p2",
     player3: "game:p3",
+    player4: "game:p4",
 }
